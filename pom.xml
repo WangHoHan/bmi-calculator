@@ -11,6 +11,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
  
   <dependencies>
@@ -26,4 +28,44 @@
    	  <version>2.0.1</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>report</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.4.3</version>
+        <configuration>
+          <targetClasses>
+            <param>com.epam.bootcamp.bmi_calculator.*</param>
+          </targetClasses>
+          <targetTests>
+            <param>com.epam.bootcamp.bmi_calculator.*</param>
+          </targetTests>
+          <mutators>
+            <mutator>DEFAULTS</mutator>
+          </mutators>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>
