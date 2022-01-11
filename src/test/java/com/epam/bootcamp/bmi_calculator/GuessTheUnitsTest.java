@@ -34,5 +34,26 @@ public class GuessTheUnitsTest {
 			assertEquals(e.getMessage(),"Height and weight is in different metric.");
 		}
 	}
-	
+
+	@Test
+	public void GuessTheUnitTest5() throws Exception{
+		GuessTheUnits gtu = new GuessTheUnits(100,1000);
+		assertEquals(gtu.getUnitType(),"metric");
+		assertEquals(gtu.getWeight(),1000,1);
+	}
+
+	@Test
+	public void GuessTheUnitTest6() throws Exception{
+		GuessTheUnits gtu = new GuessTheUnits(10,1000);
+		assertEquals(gtu.getUnitType(),"US");
+		assertEquals(gtu.getWeight(),1000,1);
+	}
+
+	@Test
+	public void GuessTheUnitTest7() throws Exception{
+		GuessTheUnits gtu = new GuessTheUnits(3,100);
+		assertEquals(gtu.getUnitType(),"metric");
+		assertEquals(gtu.getWeight(),100,1);
+	}
+
 }
