@@ -37,7 +37,7 @@ public class App extends Exception
 			UsBMI ubmi = new UsBMI();
 			ubmi.setBMI(gtu.getWeight(), gtu.getHeight());
 			this.bmi = ubmi.getBMI();
-		}else if(gtu.getUnitType().equals("metric")){
+		}else{
 			MetricBMI mbmi = new MetricBMI();
 			mbmi.setBMI(gtu.getWeight(), gtu.getHeight());
 			this.bmi = mbmi.getBMI();
@@ -52,9 +52,9 @@ public class App extends Exception
 	public String bmiResult(){
 		if(this.bmi < 18.5){ // Sovány
 			return "Thinness";
-		}else if(this.bmi >= 18.5 && this.bmi <= 24.9){ // Normál testalkatú
+		}else if(this.bmi <= 24.9){ // Normál testalkatú
 			return "Normal";
-		}else if(this.bmi > 24.9 && this.bmi <= 29.9){ // Túlsúlyos
+		}else if(this.bmi <= 29.9){ // Túlsúlyos
 			return "Overweight";
 		}else{ // Erősen túlsúlyos
 			return "Heavily overweight";
